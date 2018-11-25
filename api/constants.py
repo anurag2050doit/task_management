@@ -1,0 +1,4 @@
+USER_FILE_PATH = 'dummy_data/USER_MOCK_DATA.csv'
+CATEGORY_FILE_PATH = 'dummy_data/CATEGORY_MOCK_DATA.csv'
+TAG_FILE_PATH = 'dummy_data/TAG_MOCK_DATA.csv'
+TASK_FILE_PATH = 'dummy_data/TICKET_MOCK_DATA.json'

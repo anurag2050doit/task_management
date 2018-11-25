@@ -1,3 +1,54 @@
 from django.db import models
 
+
 # Create your models here.
+
+class Category(models.Model):
+    category = models.CharField(max_length=50, unique=True)
+    is_deleted = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        """ Soft delete """
+        self.is_deleted = True
+        self.save()
+
+
+class Tag(models.Model):
+    tag = models.CharField(max_length=50, unique=True)
+    is_deleted = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        """ Soft delete """
+        self.is_deleted = True
+        self.save()
+
+
+class Task(models.Model):
+    PRIORITY_CHOICES = (
+        (1, 'Blocker'),
+        (2, 'Critical'),
+        (3, 'Major'),
+        (4, 'Minor')
+    )
+
+    is_deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=254)
+    description = models.TextField(blank=True)
+    priority = models.PositiveIntegerField(choices=PRIORITY_CHOICES, default=4)
+    category = models.ManyToManyField('Category', blank=True, related_name='categories')
+    tag = models.ManyToManyField('Tag', blank=True, related_name='tags')
+    created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='creator')
+    assigned_to = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='assignee')
+
+    class Meta:
+        ordering = ['pk']
+
+    def delete(self, *args, **kwargs):
+        """ Soft delete """
+        self.is_deleted = True
+        self.save()
+
+    def __unicode__(self):
+        return '%d. %s' % (self.pk, self.title)
