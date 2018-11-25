@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="268d6ca0-178a-4118-a0b3-f72a15062b74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/management/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/management/commands/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/management/commands/load_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dummy_data/CATEGORY_MOCK_DATA.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dummy_data/TAG_MOCK_DATA.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dummy_data/TICKET_MOCK_DATA.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dummy_data/USER_MOCK_DATA.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jira/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/jira/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jira/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/jira/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -495,7 +476,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
