@@ -12,6 +12,9 @@ class Category(models.Model):
         self.is_deleted = True
         self.save()
 
+    def __str__(self):
+        return '%s' % self.category
+
 
 class Tag(models.Model):
     tag = models.CharField(max_length=50, unique=True)
@@ -22,6 +25,9 @@ class Tag(models.Model):
         self.is_deleted = True
         self.save()
 
+    def __str__(self):
+        return '%s' % self.tag
+
 
 class Task(models.Model):
     PRIORITY_CHOICES = (
@@ -30,6 +36,12 @@ class Task(models.Model):
         (3, 'Major'),
         (4, 'Minor')
     )
+    TASK_STATUS_CHOICES = (
+        ('BL', 'Blocked'),
+        ('OP', 'Open'),
+        ('IP', 'In Progress'),
+        ('IR', 'In Review')
+    )
 
     is_deleted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -37,6 +49,7 @@ class Task(models.Model):
     title = models.CharField(max_length=254)
     description = models.TextField(blank=True)
     priority = models.PositiveIntegerField(choices=PRIORITY_CHOICES, default=4)
+    task_status = models.CharField(max_length=2, choices=TASK_STATUS_CHOICES, default='OP')
     category = models.ManyToManyField('Category', blank=True, related_name='categories')
     tag = models.ManyToManyField('Tag', blank=True, related_name='tags')
     created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='creator')
@@ -50,5 +63,5 @@ class Task(models.Model):
         self.is_deleted = True
         self.save()
 
-    def __unicode__(self):
+    def __str__(self):
         return '%d. %s' % (self.pk, self.title)

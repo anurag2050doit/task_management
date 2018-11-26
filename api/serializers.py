@@ -1,9 +1,21 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 
-from api.models import Task
+from api.models import Task, Category, Tag
 
 
-class TicketSerializers(serializers.ModelSerializer):
+class TaskSerializers(ModelSerializer):
     class Meta:
         model = Task
-        exclude = ('id', 'is_deleted', 'created_at', 'modified_at')
+        exclude = ('is_deleted', 'created_at', 'modified_at')
+
+
+class CategorySerializers(ModelSerializer):
+    class Meta:
+        model = Category
+        exclude = ('is_deleted',)
+
+
+class TagSerializers(ModelSerializer):
+    class Meta:
+        model = Tag
+        exclude = ('is_deleted',)
