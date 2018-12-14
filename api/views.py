@@ -8,7 +8,7 @@ from api import serializers
 # Create your views here.
 
 class TasksAllAPI(ListAPIView):
-    queryset = models.Task.objects.filter(is_deleted=False)
+    queryset = models.Task.objects.filter(is_deleted=False).exclude(task_status='CL')
     serializer_class = serializers.TaskSerializers
     permission_classes = (AllowAny,)
 

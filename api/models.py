@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 
 
 # Create your models here.
@@ -15,6 +16,9 @@ class Category(models.Model):
     def __str__(self):
         return '%s' % self.category
 
+    def __unicode__(self):
+        return '%s' % self.category
+
 
 class Tag(models.Model):
     tag = models.CharField(max_length=50, unique=True)
@@ -26,6 +30,9 @@ class Tag(models.Model):
         self.save()
 
     def __str__(self):
+        return '%s' % self.tag
+
+    def __unicode__(self):
         return '%s' % self.tag
 
 
@@ -40,7 +47,8 @@ class Task(models.Model):
         ('BL', 'Blocked'),
         ('OP', 'Open'),
         ('IP', 'In Progress'),
-        ('IR', 'In Review')
+        ('IR', 'In Review'),
+        ('CL', 'Closed')
     )
 
     is_deleted = models.BooleanField(default=False)
@@ -56,7 +64,7 @@ class Task(models.Model):
     assigned_to = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='assignee')
 
     class Meta:
-        ordering = ['pk']
+        ordering = ['priority', '-modified_at']
 
     def delete(self, *args, **kwargs):
         """ Soft delete """

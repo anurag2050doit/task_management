@@ -6,6 +6,15 @@ __pycache__/
 .idea/
 */.idea/*
 
+# Env
+env/
+
+# Ignore Node modules
+node_modules/
+static/node_modules/
+
+# Ignore log
+*.log
 
 # Ignore DB
 db.sqlite3

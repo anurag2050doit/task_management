@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="task">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management App</title>
+    <base href="/"/>
+
+    {% include 'stylesheets.html' %}
+</head>
+<body>
+{% verbatim %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 ng-view"></div>
+        </div>
+    </div>
+{% endverbatim %}
+{% include 'javascripts.html' %}
+
+</body>
+</html>

@@ -1,12 +1,16 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, ReadOnlyField, CharField
 
 from api.models import Task, Category, Tag
 
 
 class TaskSerializers(ModelSerializer):
+    assignee_name = ReadOnlyField(source='assigned_to.get_full_name')
+    creator_name = ReadOnlyField(source='created_by.get_full_name')
+    priority = CharField(source='get_priority_display')
+
     class Meta:
         model = Task
-        exclude = ('is_deleted', 'created_at', 'modified_at')
+        fields = ('id', 'assignee_name', 'creator_name', 'title', 'priority')
 
 
 class CategorySerializers(ModelSerializer):
