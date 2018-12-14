@@ -1,0 +1,29 @@
+{
+  "name": "task_management",
+  "version": "1.0.0",
+  "description": "- Create virtualenv `virtualevn -p python3 env` - Activate virtualenv `source env/bin/activate` - Install dependencies `pip install -r requirements.txt`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anurag2050doit/task_management.git"
+  },
+  "author": "anurag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anurag2050doit/task_management/issues"
+  },
+  "homepage": "https://github.com/anurag2050doit/task_management",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
+    "angular": "^1.7.5",
+    "angular-ui-bootstrap": "^2.5.6",
+    "bootstrap-material-design": "^4.1.1"
+  },
+  "devDependencies": {
+    "angular-cookies": "^1.7.5",
+    "angular-route": "^1.7.5"
+  }
+}
