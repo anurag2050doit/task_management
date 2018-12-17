@@ -2,7 +2,7 @@ from json import loads
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from rest_framework import permissions, viewsets, status, views
+from rest_framework import permissions, viewsets, status, views, generics
 from rest_framework.response import Response
 
 from authentication.permissions import IsAccountOwner
@@ -11,8 +11,8 @@ from authentication.serialization import UserSerializer
 
 # Create your views here.
 
-class UserViewSet(viewsets.ModelViewSet):
-    lookup_field = 'username'
+class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+    lookup_field = 'pk'
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

@@ -7,11 +7,11 @@
                     <table>
                         <thead>
                             <tr class="row100 head">
-                                <th class="cell100 column1">Task ID</th>
+                                <th class="cell100 column1">Title</th>
                                 <th class="cell100 column2">Created By</th>
                                 <th class="cell100 column3">Assigned To</th>
-                                <th class="cell100 column4">Title</th>
-                                <th class="cell100 column5">Priority</th>
+                                <th class="cell100 column4">Priority</th>
+                                <th class="cell100 column5">Status</th>
                             </tr>
                         </thead>
                     </table>
@@ -21,13 +21,28 @@
                     <table>
                         <tbody>
                             <tr class="row100 body" ng-repeat="task in vm.tasks">
-                                <td class="cell100 column1">{{task.id}}</td>
+                                <td class="cell100 column1">{{task.id}}.&nbsp;
+                                    <a ng-href="/task/{{task.id}}"> <span class=" text-capitalize font-weight-bold">{{task.title}}</span></a>
+                                </td>
                                 <td class="cell100 column2">{{task.creator_name}}</td>
                                 <td class="cell100 column3">{{task.assignee_name}}</td>
-                                <td class="cell100 column4">{{task.title}}</td>
-                                <td class="cell100 column5">{{task.priority}}</td>
+                                <td class="cell100 column4">{{task.priority}}</td>
+                                <td class="cell100 column5">{{task.task_status}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <nav aria-label="..." style="text-align:right;">
+                <ul class="pagination" style="display: inline-flex;">
+                    <li class="page-item" ng-hide="vm.previous_page == null">
+                        <a class="page-link" href="#" ng-click="vm.pagination(vm.previous_page)">Previous</a>
+                    </li>
+                    <li class="page-item" ng-hide="vm.next_page == null">
+                        <a class="page-link" href="#" ng-click="vm.pagination(vm.next_page)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,8 @@
      * @desc The Factory to be returned
      */
     var Layout = {
-      GetAllTask: GetAllTask
+      GetAllTask: GetAllTask,
+      getPaginationResponse: getPaginationResponse,
     };
 
     return Layout;
@@ -44,6 +45,22 @@
       function getTaskSuccessFn(data, status, headers, config) {
         return data;
       }
+    }
+
+    /**
+     * @name GetAllTask
+     * @desc Return All Task
+     * @returns {Promise}
+     * @memberOf site.Layout.services.Layout
+     */
+    function getPaginationResponse(url) {
+      return $http({
+        url: url,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
     }
   }
 })();

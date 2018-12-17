@@ -1,0 +1,93 @@
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <div class="table100-head">
+                    <div class="row100 head">
+                        <a ng-href="/task/{{vm.id}}">
+                            <h1>{{vm.id}}.&nbsp;{{vm.title}}</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="table100-body">
+                    <div class="row100 body">
+                        <button type="button" class="btn btn-primary">
+                            Edit
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-disabled="vm.task_status == 'BL'" ng-click="vm.updateTaskStatus('BL')">
+                            Blocked
+                            <i class="fa fa-ban"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-disabled="vm.task_status == 'OP'" ng-click="vm.updateTaskStatus('OP')">
+                            Open
+                            <i class="fa fa-check"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-disabled="vm.task_status == 'IP'" ng-click="vm.updateTaskStatus('IP')">
+                            In Progress
+                            <i class="fa fa-check-circle-o"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-disabled="vm.task_status == 'IR'" ng-click="vm.updateTaskStatus('IR')">
+                            In Review
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-disabled="vm.task_status == 'CL'" ng-click="vm.updateTaskStatus('CL')">
+                            Closed
+                            <i class="fa fa-window-close"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="row100 body text-primary">
+                        <h2>Details</h2>
+                    </div>
+                    <hr>
+                    <div class="row100 body">
+                        <tr class="cell100 column1"><strong>Priority:</strong>&emsp;{{vm.priority}}</tr>
+                    </div>
+                    <div class="row100 body">
+                        <tr class="cell100 column1"><strong>Tags:</strong>&emsp;
+                            <span ng-repeat="tag in vm.tags">{{tag}}&nbsp;</span>
+                        </tr>
+                    </div>
+                    <div class="row100 body">
+                        <tr class="cell100 column1"><strong>Categories:</strong>&emsp;
+                            <span ng-repeat="cat in vm.categories">{{cat}}&nbsp;</span>
+                        </tr>
+                    </div>
+                    <hr>
+                    <div class="row100 body text-primary">
+                        <h2>People</h2>
+                    </div>
+                    <hr>
+                    <div class="row100 body">
+                        <tr class="cell100 column1"><strong>Created By:</strong>&emsp;{{vm.creator_name}}</tr>
+                    </div>
+                    <div class="row100 body">
+                        <tr class="cell100 column1"><strong>Assigned To:</strong>&emsp;{{vm.assignee_name}}</tr>
+                    </div>
+                    <hr>
+                    <div class="row100 body text-primary">
+                        <h2>Dates</h2>
+                    </div>
+                    <hr>
+                    <div class="row100 body">
+                        <tr class="cell100 column1"><strong>Created On:</strong>&emsp;{{vm.created_at |
+                            date:'MM/dd/yyyy @ h:mma'}}</tr>
+                    </div>
+                    <div class="row100 body">
+                        <tr class="cell100 column1"><strong>Modified On:</strong>&emsp;{{vm.modified_at |
+                            date:'MM/dd/yyyy @ h:mma'}}</tr>
+                    </div>
+                    <hr>
+                    <div class="row100 body text-primary">
+                        <h2>Description</h2>
+                    </div>
+                    <hr>
+                    <div class="row100 body">
+                        {{vm.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

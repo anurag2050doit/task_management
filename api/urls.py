@@ -1,10 +1,10 @@
-from django.conf.urls import url
+from django.urls import path
 
 from api import views
 
 urlpatterns = [
-    url(r'^tasks/$', views.TasksAllAPI.as_view(), name='all-task'),
-    url(r'^categories/$', views.CategoriesAllAPI.as_view(), name='all-categories'),
-    url(r'tags/$', views.TagsAllAPI.as_view(), name='all-tags'),
-    url(r'^task/(?P<pk>\d+)$', views.TaskSingleAPI.as_view(), name='task')
+    path('tasks/', views.TasksAllAPI.as_view(), name='all-task'),
+    path('categories/', views.CategoriesAllAPI.as_view(), name='all-categories'),
+    path('tags/', views.TagsAllAPI.as_view(), name='all-tags'),
+    path('task/<int:pk>/', views.TaskSingleAPI.as_view(), name='task-detail')
 ]

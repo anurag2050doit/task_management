@@ -9,7 +9,7 @@ from api import serializers
 
 class TasksAllAPI(ListAPIView):
     queryset = models.Task.objects.filter(is_deleted=False).exclude(task_status='CL')
-    serializer_class = serializers.TaskSerializers
+    serializer_class = serializers.TaskListSerializers
     permission_classes = (AllowAny,)
 
 
@@ -29,4 +29,4 @@ class TaskSingleAPI(RetrieveUpdateDestroyAPIView):
     lookup_field = 'pk'
     queryset = models.Task.objects.all()
     permission_classes = (AllowAny,)
-    serializer_class = serializers.TaskSerializers
+    serializer_class = serializers.TaskDetailSerializers
