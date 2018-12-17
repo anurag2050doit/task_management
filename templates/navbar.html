@@ -1,26 +1,46 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#we-are-borg-navbar">
-        <span class="sr-only">Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Not Google Plus</a>
-    </div> <!-- ./navbar-header -->
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark" ng-controller="NavbarController as vm">
+  <i class="fa fa-hashtag" aria-hidden="true"></i>&nbsp;
+  <a class="navbar-brand" href="/">Jira</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="we-are-borg-navbar">
-      <ul class="nav navbar-nav pull-right">
-        {% if user.is_authenticated %}
-          <li><a href="/+{{ user.username }}">+{{ user.username }}</a></li>
-          <li><a href="/+{{ user.username }}/settings">Settings</a></li>
-          <li><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>
-        {% else %}
-          <li><a href="/login">Login</a></li>
-          <li><a href="/register">Register</a></li>
-        {% endif %}
-      </ul>
-    </div> <!-- /.collapse.navbar-collapse -->
-  </div> <!-- /.container-fluid -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">New Task</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-3 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav" ng-hide="vm.isAuthenticated">
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sign Up</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav" ng-if="vm.isAuthenticated">
+      <li class="nav-item">
+        <a class="nav-link" href="/login">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          {{user.first_name}}
+        </a>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-primary my-2 my-sm-0" ng-click="vm.logout()">
+          <i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Logout</button>
+      </li>
+    </ul>
+  </div>
 </nav>

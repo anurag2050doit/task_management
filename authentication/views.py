@@ -1,8 +1,7 @@
-from json import loads
-
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from rest_framework import permissions, viewsets, status, views, generics
+from rest_framework import permissions, status, views, generics
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.response import Response
 
 from authentication.permissions import IsAccountOwner
@@ -69,6 +68,7 @@ class LoginView(views.APIView):
 
 
 class LogoutView(views.APIView):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, format=None):

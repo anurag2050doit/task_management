@@ -23,6 +23,10 @@
     var Authentication = {
       login: login,
       isAuthenticated: isAuthenticated,
+      getAuthenticatedAccount: getAuthenticatedAccount,
+      logout: logout,
+      setAuthenticatedAccount: setAuthenticatedAccount,
+      unauthenticate: unauthenticate,
     };
 
     return Authentication;
@@ -36,10 +40,10 @@
      * @memberOf site.authentication.services.Authentication
      */
     function getAuthenticatedAccount() {
-      if (!$cookies.authenticatedAccount) {
+      if (!$cookies.getObject('authenticatedAccount')) {
         return;
       }
-      return JSON.parse($cookies.authenticatedAccount);
+      return JSON.parse($cookies.getObject('authenticatedAccount'));
     }
 
 
@@ -50,7 +54,7 @@
      * @memberOf site.authentication.services.Authentication
      */
     function isAuthenticated() {
-      return !!$cookies.authenticatedAccount;
+      return !!$cookies.getObject('authenticatedAccount');
     }
 
 
@@ -101,7 +105,7 @@
      * @memberOf site.authentication.services.Authentication
      */
     function logout() {
-      return $http.post('/auth/logout/')
+      return $http.post('/api-auth/logout/')
         .then(logoutSuccessFn, logoutErrorFn);
 
       /**
@@ -166,9 +170,9 @@
      * @memberOf site.authentication.services.Authentication
      */
     function setAuthenticatedAccount(account) {
-      $cookies.authenticatedAccount = JSON.stringify(account);
+      debugger;
+      $cookies.putObject('authenticatedAccount', JSON.stringify(account))
     }
-
 
     /**
      * @name unauthenticate
@@ -177,7 +181,7 @@
      * @memberOf site.authentication.services.Authentication
      */
     function unauthenticate() {
-      delete $cookies.authenticatedAccount;
+      delete $cookies.remove('authenticatedAccount');
     }
   }
 })();
