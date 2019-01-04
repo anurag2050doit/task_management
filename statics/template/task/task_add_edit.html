@@ -1,0 +1,72 @@
+{{vm.task}}
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="alert alert-success" role="alert" ng-if="vm.message">
+        </div>
+        {{vm.message}}
+        <div class="form-area">
+            <form role="form" ng-submit="vm.addEditTask()">
+                <br style="clear:both">
+                <h3 style="margin-bottom: 25px; text-align: center;">Create Task</h3>
+                <div class="form-group">
+                    <label for="title">Enter Description</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Title"
+                           ng-model="vm.task.title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Enter Description</label>
+                    <textarea type="textarea" class="col-md-12 form-group" id="description" name="description"
+                              placeholder="Enter Task Description" rows="5" ng-model="vm.task.description" required>
+                    </textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group dropdown">
+                        <label for="priority">Select Priority</label>
+                        <select class="custom-select btn btn-primary" id="priority" ng-model="vm.task.priority"
+                                required>
+                            <option value="1">Blocker</option>
+                            <option value="2">Critical</option>
+                            <option value="3">Major</option>
+                            <option value="4">Minor</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group dropdown">
+                        <label for="task">Select Status</label>
+                        <select class="custom-select btn btn-primary" id="task" ng-model="vm.task.task_status" required>
+                            <option value="OP">Open</option>
+                            <option value="BL">Blocked</option>
+                            <option value="IP">In Progress</option>
+                            <option value="CL">Close</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 form-group dropdown">
+                        <label for="tag">Select Tag</label>
+                        <select class="custom-select" id="tag" ng-model="vm.task.tag"
+                                ng-options="tag.id as tag.tag for tag in vm.tags" multiple size="5">
+                        </select>
+                    </div>
+                    <div class="col-md-7 form-group dropdown">
+                        <label for="category">Select Category</label>
+                        <select class="custom-select" id="category" ng-model="vm.task.category"
+                                ng-options="cat.id as cat.category for cat in vm.categories" multiple size="5">
+                        </select>
+                    </div>
+                    <div class="col-md-12 form-group dropdown">
+                        <label for="assign_user">Select Assign User</label>
+                        <input id="assign_user" class="form-control" type="text" ng-model="vm.user"
+                               ng-change="vm.searchUser()" placeholder="Select User">
+                        <select class="custom-select" id="userList" ng-if="vm.userList" ng-model="vm.task.assign_user"
+                                ng-options="user.id as user.first_name + ' ' + user.last_name for user in vm.userList"
+                                size="5">
+                        </select>
+                    </div>
+                </div>
+                <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

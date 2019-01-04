@@ -27,11 +27,34 @@
       logout: logout,
       setAuthenticatedAccount: setAuthenticatedAccount,
       unauthenticate: unauthenticate,
+      searchUser: searchUser
     };
 
     return Authentication;
 
     ///////////////////
+
+    /**
+     * @name searchUser
+     * @param user
+     * @desc Return the list of suggest users
+     * @returns {*|*|PromiseLike<T | never>|Promise<T | never>}
+     * @memberOf site.authentication.services.Authentication
+     */
+
+    function searchUser(user) {
+      return $http({
+        url: '/api-auth/username/?search=' + user + '&page_size=5',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(getApiResponse, getApiResponse);
+
+      function getApiResponse(data, status, headers, config) {
+        return data
+      }
+    }
 
     /**
      * @name getAuthenticatedAccount
@@ -170,18 +193,17 @@
      * @memberOf site.authentication.services.Authentication
      */
     function setAuthenticatedAccount(account) {
-      debugger;
       $cookies.putObject('authenticatedAccount', JSON.stringify(account))
     }
 
     /**
      * @name unauthenticate
-     * @desc Delete the cookie where the account object is stored
+     * @desc Reove the cookie where the account object is stored
      * @returns {undefined}
      * @memberOf site.authentication.services.Authentication
      */
     function unauthenticate() {
-      delete $cookies.remove('authenticatedAccount');
+      $cookies.remove('authenticatedAccount');
     }
   }
 })();

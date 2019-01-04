@@ -21,7 +21,7 @@
      */
     var Layout = {
       GetAllTask: GetAllTask,
-      getPaginationResponse: getPaginationResponse,
+      getPaginationResponse: getPaginationResponse
     };
 
     return Layout;
@@ -35,12 +35,12 @@
 
     function GetAllTask() {
       return $http({
-        url: '/api/v1/tasks/',
+        url: '/api/v1/task/',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(getTaskSuccessFn, getTaskSuccessFn)
+      }).then(getTaskSuccessFn, getTaskSuccessFn);
 
       function getTaskSuccessFn(data, status, headers, config) {
         return data;

@@ -16,11 +16,15 @@
         controller: 'LoginController',
         controllerAs: 'vm',
         templateUrl: '/static/template/authentication/login.html',
-      }).when('/task/:taskId', {
+      }).when('/task/detail/:taskId', {
         controller: 'TaskController',
         controllerAs: 'vm',
         templateUrl: '/static/template/task/task.html',
+      }).when('/task/add', {
+        controller: 'TaskAddEditController',
+        controllerAs: 'vm',
+        templateUrl: '/static/template/task/task_add_edit.html',
       })
-      .otherwise('/');
+     .otherwise('/');
   }
 })();

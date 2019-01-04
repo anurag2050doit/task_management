@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls'), name='api-groups'),
     path('api-auth/', include('authentication.urls'), name='authentication'),
-    re_path('^api-auth/', include('rest_framework.urls'), name='rest-framework'),
     re_path(r'^.*$', IndexView.as_view(), name='index')
 ]
 

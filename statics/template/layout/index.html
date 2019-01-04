@@ -22,11 +22,11 @@
                         <tbody>
                             <tr class="row100 body" ng-repeat="task in vm.tasks">
                                 <td class="cell100 column1">{{task.id}}.&nbsp;
-                                    <a ng-href="/task/{{task.id}}"> <span class=" text-capitalize font-weight-bold">{{task.title}}</span></a>
+                                    <a ng-href="/task/detail/{{task.id}}"> <span class=" text-capitalize font-weight-bold">{{task.title}}</span></a>
                                 </td>
                                 <td class="cell100 column2">{{task.creator_name}}</td>
                                 <td class="cell100 column3">{{task.assignee_name}}</td>
-                                <td class="cell100 column4">{{task.priority}}</td>
+                                <td class="cell100 column4">{{task.priority_name}}</td>
                                 <td class="cell100 column5">{{task.task_status}}</td>
                             </tr>
                         </tbody>

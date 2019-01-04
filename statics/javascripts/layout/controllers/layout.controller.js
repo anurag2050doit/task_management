@@ -14,7 +14,7 @@
     vm.previous_page = null;
     vm.tasks = null;
     vm.count = null;
-    vm.pagination = pagination
+    vm.pagination = pagination;
 
     function renderPage(data) {
       vm.taskId = data.id;
@@ -23,19 +23,16 @@
       vm.previous_page = data.previous;
       vm.tasks = data.results;
       vm.count = data.count;
-      return
     }
 
     function pagination(url) {
       Layout.getPaginationResponse(url).then(function (d) {
         renderPage(d.data);
-        return
       })
     }
 
     Layout.GetAllTask().then(function (d) {
       renderPage(d.data);
-      return
     })
   }
 })();

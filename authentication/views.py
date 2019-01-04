@@ -1,19 +1,23 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from rest_framework import permissions, status, views, generics
+from rest_framework import filters
+from rest_framework import permissions, status, views
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 from authentication.permissions import IsAccountOwner
-from authentication.serialization import UserSerializer
+from authentication.serializers import UserSerializer
 
 
 # Create your views here.
 
-class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
-    lookup_field = 'pk'
-    queryset = User.objects.all()
+class UserView(ModelViewSet):
+    queryset = User.objects.filter(is_superuser=False)
     serializer_class = UserSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('username', 'first_name', 'last_name')
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:

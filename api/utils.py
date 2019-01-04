@@ -35,7 +35,7 @@ def load_user(path, delete_all=False):
             user = User(username=row['username'],
                         first_name=row['first_name'],
                         last_name=row['last_name'],
-                        email='email'
+                        email=row['email']
                         )
             user.set_password(row['password'])
             user.is_active = True

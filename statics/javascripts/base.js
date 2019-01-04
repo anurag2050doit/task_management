@@ -4,11 +4,12 @@
   angular
     .module('base', [
       'ui.router',
+      'ui.bootstrap',
       'config',
       'routes',
       'site.layout',
       'site.authentication',
-      'site.task',
+      'site.task'
     ])
     .run(run);
 
@@ -28,6 +29,5 @@
   function run($http) {
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';
     $http.defaults.xsrfCookieName = 'csrftoken';
-    return;
   }
 })();
