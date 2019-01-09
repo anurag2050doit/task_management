@@ -5,7 +5,7 @@ from authentication.views import LoginView, LogoutView, UserView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('username', UserView)
+router.register('username', UserView, basename='user')
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),

@@ -1,10 +1,11 @@
-{{vm.task}}
-
 <div class="container">
     <div class="col-md-12">
-        <div class="alert alert-success" role="alert" ng-if="vm.message">
+        <div class="alert alert-primary" role="alert" ng-if="vm.message">
+            {{vm.message}}
         </div>
-        {{vm.message}}
+        <div class="alert alert-danger" role="alert" ng-if="vm.error">
+            {{vm.error}}
+        </div>
         <div class="form-area">
             <form role="form" ng-submit="vm.addEditTask()">
                 <br style="clear:both">
@@ -55,16 +56,17 @@
                         </select>
                     </div>
                     <div class="col-md-12 form-group dropdown">
-                        <label for="assign_user">Select Assign User</label>
-                        <input id="assign_user" class="form-control" type="text" ng-model="vm.user"
+                        <label for="assigned_to">Select Assign User</label>
+                        <input id="assigned_to" class="form-control" type="text" ng-model="vm.user"
                                ng-change="vm.searchUser()" placeholder="Select User">
-                        <select class="custom-select" id="userList" ng-if="vm.userList" ng-model="vm.task.assign_user"
+                        <select class="custom-select" id="userList" ng-if="vm.userList" ng-model="vm.task.assigned_to"
                                 ng-options="user.id as user.first_name + ' ' + user.last_name for user in vm.userList"
                                 size="5">
                         </select>
                     </div>
                 </div>
-                <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form
+                <button type="submit" id="submit" name="submit"
+                        class="btn btn-primary pull-right">Submit Form
                 </button>
             </form>
         </div>

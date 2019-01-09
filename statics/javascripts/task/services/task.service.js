@@ -42,10 +42,11 @@
      * @memberOf site.task.services
      *
      */
-   function postNewTask(data) {
+   function postNewTask(task) {
      return $http({
        url: '/api/v1/task/',
        method: 'POST',
+       data: task,
        headers: {
          'Content-Type': 'application/json'
        }

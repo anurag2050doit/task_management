@@ -17,7 +17,7 @@
     vm.addEditTask = addEditTask;
     vm.message = null;
     vm.error = null;
-    vm.taskCreateRespose = null
+    vm.taskCreateRespose = null;
 
     // function renderPage(data) {
     //   vm.tags = data.results;
@@ -25,13 +25,14 @@
     // }
 
     function addEditTask(){
-      Task.postNewTask(vm.task).then(d) {
+      Task.postNewTask(vm.task).then(function (d) {
+        debugger;
         if (d.status === 201) {
-          vm.message = 'Successful';
-        } else {
-          vm.message = 'data';
+          vm.message = "Task Created successfully";
+        }else {
+          vm.error = "OOPs! Something went wrong";
         }
-      }
+      });
     }
 
     Task.getAllTags().then(function (d) {

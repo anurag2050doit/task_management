@@ -11,19 +11,19 @@
     $routeProvider.when('/', {
         controller: 'LayoutController',
         controllerAs: 'vm',
-        templateUrl: '/static/template/layout/index.html',
+        templateUrl: '/static/template/layout/index.html'
       }).when('/login', {
         controller: 'LoginController',
         controllerAs: 'vm',
-        templateUrl: '/static/template/authentication/login.html',
+        templateUrl: '/static/template/authentication/login.html'
       }).when('/task/detail/:taskId', {
         controller: 'TaskController',
         controllerAs: 'vm',
-        templateUrl: '/static/template/task/task.html',
+        templateUrl: '/static/template/task/task.html'
       }).when('/task/add', {
         controller: 'TaskAddEditController',
         controllerAs: 'vm',
-        templateUrl: '/static/template/task/task_add_edit.html',
+        templateUrl: '/static/template/task/task_add_edit.html'
       })
      .otherwise('/');
   }

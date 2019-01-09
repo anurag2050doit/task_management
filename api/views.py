@@ -5,6 +5,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import AllowAny, IsAuthenticated, SAFE_METHODS
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 from api import models
 from api import serializers
@@ -25,21 +26,24 @@ class TaskView(ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         params = deepcopy(request.data)
-        # tags = params.pop('tag')
-        # categories = params.pop('category')
-        serializer = self.serializer_class(data=params)
+        serializer = self.serializer_class(data=params, context={'request': request})
         serializer.initial_data['created_by'] = request.user.id
         if serializer.is_valid():
             task = serializer.save()
-            # Add tag and categories to task
-            # for tag in tags:
-            #     tag_obj, is_created = models.Tag.objects.get_or_create(**tag)
-            #     task.tag.add(tag_obj)
-            # for cat in categories:
-            #     cat_obj, is_created = models.Category.objects.get_or_create(**cat)
-            #     task.category.add(cat_obj)
+            try:
+                tag_ids, category_ids = params.pop('tag'), params.pop('category')
+                tags = [models.Tag.objects.get(id__exact=id) for id in tag_ids]
+                [task.tag.add(tag) for tag in tags]
+            except (ObjectDoesNotExist, MultipleObjectsReturned):
+                return Response({'error': 'Invalid Tags'}, status=status.HTTP_400_BAD_REQUEST)
+            try:
+                categories = [models.Category.objects.get(id__exact=id) for id in category_ids]
+                [task.category.add(category) for category in categories]
+            except (ObjectDoesNotExist, MultipleObjectsReturned):
+                return Response({'error': 'Invalid Categories'})
+            task.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TagView(ModelViewSet):
