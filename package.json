@@ -18,7 +18,7 @@
   "homepage": "https://github.com/anurag2050doit/task_management",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.20",
-    "angular": "^1.7.5",
+    "angular": "^1.8.0",
     "angular-ui-bootstrap": "^2.5.6",
     "bootstrap-material-design": "^4.1.1"
   },
